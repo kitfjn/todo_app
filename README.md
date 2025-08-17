@@ -45,27 +45,26 @@ This is a full-stack web application with a FastAPI backend and a React frontend
     cd backend
     ```
 
-2.  **Install dependencies using Poetry:**
+2.  **Install dependencies library using Poetry:**
     ```bash
-    poetry install
+    poetry add library (you want to use library)
     ```
 
-3.  **Activate the virtual environment:**
+3.  **Activate the virtual environment and run database migrations:**
     ```bash
-    poetry shell
+    poetry run alembic init
+    poetry run alembic revision --autogenerate -m "first migrate"
+    poetry run alembic upgrade head
     ```
 
-4.  **Run database migrations:**
+4.  **Start the backend server:**
     ```bash
-    alembic upgrade head
+    cd backend/v1
+    poetry run fastapi dev main.py
     ```
+    Above command execute at the directory "main.py" is placed.
 
-5.  **Start the backend server:**
-    ```bash
-    uvicorn v1.main:app --reload
-    ```
-
-The backend will be running at `http://127.0.0.1:8000`.
+The backend will be running at `http://127.0.0.1:8000` or `http://127.0.0.1:8000/docs`.
 
 ### Frontend
 
